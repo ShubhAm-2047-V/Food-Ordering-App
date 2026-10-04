@@ -141,13 +141,8 @@ export function Footer() {
             </a>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-3 pt-2 text-slate-500 border-t border-slate-900 text-[11px] sm:text-xs">
+          <div className="flex flex-col sm:flex-row items-center justify-center w-full pt-2 text-slate-500 border-t border-slate-900 text-[11px] sm:text-xs">
             <p>© 2026 CRAVO Technologies Inc. Made for true food lovers.</p>
-            <div className="flex items-center gap-4">
-              <span className="flex items-center gap-1 text-slate-400">
-                Designed with <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" /> for next-gen foodies
-              </span>
-            </div>
           </div>
         </div>
       </div>
