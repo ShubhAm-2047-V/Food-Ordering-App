@@ -191,7 +191,7 @@ def build_cravo_docx():
     # --- 3. INDUSTRY TRAINING COMPLETION CERTIFICATE ---
     p_ind = doc.add_paragraph()
     p_ind.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r_shub = p_ind.add_run("SHUBDEEP LABS\n")
+    r_shub = p_ind.add_run("SHREEVIDYA INFOTECH\n")
     r_shub.font.size = Pt(17)
     r_shub.font.bold = True
     r_shub.font.color.rgb = RGBColor(15, 23, 42)
@@ -218,7 +218,7 @@ def build_cravo_docx():
     p_comp_body.add_run(", a student of Vidya Vikas Pratishthan Polytechnic, Solapur (Enrollment No: ")
     p_comp_body.add_run("24212130227").font.bold = True
     p_comp_body.add_run("), pursuing Diploma in Computer Engineering, has successfully completed 6 weeks of comprehensive Industrial Training at ")
-    p_comp_body.add_run("SHUBDEEP LABS").font.bold = True
+    p_comp_body.add_run("SHREEVIDYA INFOTECH").font.bold = True
     p_comp_body.add_run(" during the academic session 2025–2026.\n\n")
     
     p_comp_body.add_run("During his training tenure, he actively worked on the live software engineering project titled ")
@@ -233,7 +233,7 @@ def build_cravo_docx():
     
     p_comp_sign = doc.add_paragraph()
     p_comp_sign.paragraph_format.space_before = Pt(20)
-    p_comp_sign.add_run("Date: October 2026 | Solapur\t\t\t\tFor SHUBDEEP LABS,\n\n\n\t\t\t\t\t\t\t\t__________________________\n\t\t\t\t\t\t\t\tAuthorized Signatory & Training Head")
+    p_comp_sign.add_run("Date: October 2026 | Solapur\t\t\t\tFor SHREEVIDYA INFOTECH,\n\n\n\t\t\t\t\t\t\t\t__________________________\n\t\t\t\t\t\t\t\tAuthorized Signatory & Training Head")
     p_comp_sign.runs[0].font.bold = True
     p_comp_sign.runs[0].font.size = Pt(10)
     
@@ -261,7 +261,7 @@ def build_cravo_docx():
     p_ack.add_run(", Principal of Vidya Vikas Pratishthan Polytechnic, Solapur, for his constant support and for creating an inspiring academic environment.\n\n")
     
     p_ack.add_run("I also extend my sincere appreciation to the technical team and mentors at ")
-    p_ack.add_run("SHUBDEEP LABS").font.bold = True
+    p_ack.add_run("SHREEVIDYA INFOTECH").font.bold = True
     p_ack.add_run(" for providing real-world software engineering exposure, industry mentorship, and practical training during my industrial internship.\n\n")
     
     p_ack.add_run("Finally, I wish to thank my parents, family members, and friends for their continuous moral support and motivation during my diploma studies.\n\n")
@@ -289,7 +289,7 @@ def build_cravo_docx():
     p_abs.add_run("To solve these fundamental user experience challenges, the ")
     p_abs.add_run("CRAVO").font.bold = True
     p_abs.add_run(" food ordering platform was engineered during an intensive 6-week industrial training program at ")
-    p_abs.add_run("SHUBDEEP LABS").font.bold = True
+    p_abs.add_run("SHREEVIDYA INFOTECH").font.bold = True
     p_abs.add_run(". The platform is a modern, high-performance web application built with ")
     p_abs.add_run("Next.js 15 App Router, React 19, TypeScript, Tailwind CSS, Framer Motion, and Lenis Smooth Inertial Scrolling").font.bold = True
     p_abs.add_run(".\n\n")
@@ -350,7 +350,7 @@ def build_cravo_docx():
         
     toc_data = [
         ("—", "Preliminary: Certificates, Acknowledgement & Abstract", "i – v"),
-        ("1", "ORGANIZATION PROFILE – SHUBDEEP LABS\n  1.1 Overview & Technical Domains of ShubDeep Labs\n  1.2 Industrial Training Objectives & Assigned Project Scope", "1\n1\n2"),
+        ("1", "ORGANIZATION PROFILE – SHREEVIDYA INFOTECH\n  1.1 Overview & Technical Domains of Shreevidya Infotech\n  1.2 Industrial Training Objectives & Assigned Project Scope", "1\n1\n2"),
         ("2", "INTRODUCTION & PROJECT OVERVIEW\n  2.1 Background of Food Tech & Decision Fatigue\n  2.2 Problem Statement & Challenges in Food Delivery\n  2.3 Objectives & Vision of CRAVO Platform", "3\n3\n4\n4"),
         ("3", "SYSTEM REQUIREMENTS SPECIFICATION (SRS)\n  3.1 Hardware & Software Environments (Detailed Tech Specs)\n  3.2 Functional (FR1–FR8) & Non-Functional (NFR1–NFR4) Requirements", "5\n5\n6"),
         ("4", "SYSTEM ARCHITECTURE & DATA DESIGN\n  4.1 Next.js App Router Architecture & Component Flow\n  4.2 Relational Data Models & Cart Data Dictionary", "7\n7\n8"),
@@ -378,12 +378,12 @@ def build_cravo_docx():
     doc.add_page_break()
     
     # --- CHAPTER 1 ---
-    doc.add_heading("CHAPTER 1: ORGANIZATION PROFILE – SHUBDEEP LABS", level=1)
-    doc.add_heading("1.1 Overview & Technical Domains of ShubDeep Labs", level=2)
+    doc.add_heading("CHAPTER 1: ORGANIZATION PROFILE – SHREEVIDYA INFOTECH", level=1)
+    doc.add_heading("1.1 Overview & Technical Domains of Shreevidya Infotech", level=2)
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-    p.add_run("SHUBDEEP LABS is a progressive information technology and software product engineering organization committed to delivering cutting-edge web applications, artificial intelligence products, and combinatorial algorithmic solutions. Located across Solapur and Bengaluru, the organization provides specialized software engineering consulting, agile product development, and structured industrial internship training for engineering candidates.\n\n")
-    p.add_run("Core Competencies: Core technological capabilities at ShubDeep Labs include:\n")
+    p.add_run("SHREEVIDYA INFOTECH is a progressive information technology and software product engineering organization committed to delivering cutting-edge web applications, artificial intelligence products, and combinatorial algorithmic solutions. Located across Solapur and Bengaluru, the organization provides specialized software engineering consulting, agile product development, and structured industrial internship training for engineering candidates.\n\n")
+    p.add_run("Core Competencies: Core technological capabilities at Shreevidya Infotech include:\n")
     
     p = doc.add_paragraph(style='List Bullet')
     p.add_run("Full-Stack Modern Web Engineering: Next.js 15, React 19, TypeScript, Node.js, Tailwind CSS, Framer Motion, and Lenis momentum physics.")
@@ -397,7 +397,7 @@ def build_cravo_docx():
     doc.add_heading("1.2 Industrial Training Objectives & Assigned Project Scope", level=2)
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-    p.add_run("The 6-week industrial training curriculum at ShubDeep Labs was designed to provide end-to-end practical immersion into modern full-stack development. The assigned project, titled “CRAVO”, was conceived to solve the critical operational challenge of user decision fatigue and budget unpredictability in online food ordering.\n\n")
+    p.add_run("The 6-week industrial training curriculum at Shreevidya Infotech was designed to provide end-to-end practical immersion into modern full-stack development. The assigned project, titled “CRAVO”, was conceived to solve the critical operational challenge of user decision fatigue and budget unpredictability in online food ordering.\n\n")
     p.add_run("Internship Objectives: The primary technical training objectives included:\n")
     
     p = doc.add_paragraph(style='List Bullet')
@@ -764,7 +764,7 @@ def build_cravo_docx():
     doc.add_heading("8.1 Summary & Industrial Training Outcomes", level=2)
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-    p.add_run("The 6-week industrial training at SHUBDEEP LABS provided invaluable practical exposure to full-stack web development, algorithmic problem solving, interaction physics, and software quality assurance. The developed application, CRAVO, successfully addresses user decision fatigue and budget unpredictability in food ordering.\n\n")
+    p.add_run("The 6-week industrial training at SHREEVIDYA INFOTECH provided invaluable practical exposure to full-stack web development, algorithmic problem solving, interaction physics, and software quality assurance. The developed application, CRAVO, successfully addresses user decision fatigue and budget unpredictability in food ordering.\n\n")
     p.add_run("Key skills gained during this industrial training include:\n")
     
     p = doc.add_paragraph(style='List Bullet')
@@ -802,8 +802,12 @@ def build_cravo_docx():
         p_ref = doc.add_paragraph()
         p_ref.add_run(r_txt)
         
-    out_path = 'E:/FOOD ORDERING/ITR_Report_CRAVO.docx'
-    doc.save(out_path)
+    try:
+        out_path = 'E:/FOOD ORDERING/ITR_Report_CRAVO.docx'
+        doc.save(out_path)
+    except PermissionError:
+        out_path = 'E:/FOOD ORDERING/ITR_Report_CRAVO_MSBTE.docx'
+        doc.save(out_path)
     print(f"Successfully generated: {out_path} ({os.path.getsize(out_path)} bytes)")
 
 if __name__ == '__main__':

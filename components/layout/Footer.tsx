@@ -120,10 +120,10 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar & ShubDeep Labs Center Button */}
+        {/* Bottom Bar & Shreevidya Infotech Center Button */}
         <div className="pt-6 sm:pt-8 flex flex-col items-center justify-center gap-4 text-xs text-slate-500 text-center">
           
-          {/* Centered ShubDeep Labs Button */}
+          {/* Centered Shreevidya Infotech Button */}
           <div className="flex flex-col items-center justify-center">
             <a
               href="https://shubh-deep-labs.vercel.app/"
@@ -133,10 +133,10 @@ export function Footer() {
             >
               <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider group-hover:text-slate-200 transition-colors">
-                Crafted by
+                Developed at
               </span>
               <span className="text-xs sm:text-sm font-black bg-gradient-to-r from-brand-orange via-brand-pink to-brand-purple bg-clip-text text-transparent group-hover:from-amber-300 group-hover:via-pink-400 group-hover:to-cyan-400 transition-all font-display">
-                ShubDeep Labs 🚀
+                Shreevidya Infotech 🚀
               </span>
             </a>
           </div>
