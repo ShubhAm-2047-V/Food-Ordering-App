@@ -120,13 +120,34 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 text-center sm:text-left">
-          <p>© 2026 CRAVO Technologies Inc. Made for true food lovers.</p>
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1 text-slate-400">
-              Designed with <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" /> for next-gen foodies
-            </span>
+        {/* Bottom Bar & ShubDeep Labs Center Button */}
+        <div className="pt-6 sm:pt-8 flex flex-col items-center justify-center gap-4 text-xs text-slate-500 text-center">
+          
+          {/* Centered ShubDeep Labs Button */}
+          <div className="flex flex-col items-center justify-center">
+            <a
+              href="https://shubh-deep-labs.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 hover:border-brand-orange/60 shadow-lg hover:shadow-glow-orange transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95"
+            >
+              <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider group-hover:text-slate-200 transition-colors">
+                Crafted by
+              </span>
+              <span className="text-xs sm:text-sm font-black bg-gradient-to-r from-brand-orange via-brand-pink to-brand-purple bg-clip-text text-transparent group-hover:from-amber-300 group-hover:via-pink-400 group-hover:to-cyan-400 transition-all font-display">
+                ShubDeep Labs 🚀
+              </span>
+            </a>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-3 pt-2 text-slate-500 border-t border-slate-900 text-[11px] sm:text-xs">
+            <p>© 2026 CRAVO Technologies Inc. Made for true food lovers.</p>
+            <div className="flex items-center gap-4">
+              <span className="flex items-center gap-1 text-slate-400">
+                Designed with <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" /> for next-gen foodies
+              </span>
+            </div>
           </div>
         </div>
       </div>
