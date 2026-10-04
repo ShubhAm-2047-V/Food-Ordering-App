@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { AppProvider } from "@/context/AppContext";
+import { SmoothScrollProvider } from "@/components/ui/SmoothScrollProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { Footer } from "@/components/layout/Footer";
@@ -37,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -47,17 +48,19 @@ export default function RootLayout({
         />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
-      <body className="min-h-screen flex flex-col bg-brand-light text-slate-900 antialiased selection:bg-brand-orange selection:text-white overscroll-none">
+      <body className="min-h-screen flex flex-col bg-brand-light text-slate-900 antialiased selection:bg-brand-orange selection:text-white">
         <AppProvider>
-          <Navbar />
-          <main className="flex-1 pb-20 lg:pb-0">
-            {children}
-          </main>
-          <Footer />
-          <MobileNav />
-          <CartDrawer />
-          <FoodModal />
-          <ToastContainer />
+          <SmoothScrollProvider>
+            <Navbar />
+            <main className="flex-1 pb-20 lg:pb-0">
+              {children}
+            </main>
+            <Footer />
+            <MobileNav />
+            <CartDrawer />
+            <FoodModal />
+            <ToastContainer />
+          </SmoothScrollProvider>
         </AppProvider>
       </body>
     </html>

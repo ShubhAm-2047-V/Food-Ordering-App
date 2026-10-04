@@ -21,11 +21,13 @@ import {
   Zap
 } from 'lucide-react';
 import { Mood, DietaryPreference } from '@/types';
+import { useSmoothScroll } from '@/components/ui/SmoothScrollProvider';
 
 function FoodMoodContent() {
   const searchParams = useSearchParams();
   const initialMoodId = searchParams.get('mood') || 'spicy';
   const productsSectionRef = useRef<HTMLElement>(null);
+  const { scrollTo } = useSmoothScroll();
   
   const { foods } = useApp();
   const [selectedMood, setSelectedMood] = useState<Mood>(
@@ -41,18 +43,16 @@ function FoodMoodContent() {
 
   const scrollToProducts = () => {
     if (productsSectionRef.current) {
-      const yOffset = -85; // navbar height clearance
-      const y = productsSectionRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      scrollTo(productsSectionRef.current, { offset: -90, duration: 1.4 });
     }
   };
 
   const handleSelectMood = (mood: Mood) => {
     setSelectedMood(mood);
-    // Smooth scroll down to matched dishes
+    // Smooth scroll down to matched dishes with buttery physics
     setTimeout(() => {
       scrollToProducts();
-    }, 60);
+    }, 50);
   };
 
   useEffect(() => {
