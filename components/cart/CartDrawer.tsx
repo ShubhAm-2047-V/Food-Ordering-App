@@ -163,47 +163,56 @@ export function CartDrawer() {
                   </div>
                 ) : (
                   <>
-                    {/* Items List */}
+                    {/* Items List with Layout Animations */}
                     <div className="space-y-3">
-                      {cart.map(item => (
-                        <div
-                          key={item.food.id}
-                          className="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-100"
-                        >
-                          <img
-                            src={item.food.image}
-                            alt={item.food.name}
-                            className="w-14 h-14 rounded-xl object-cover shrink-0"
-                          />
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-1.5">
-                              <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${item.food.isVeg ? 'bg-emerald-500' : 'bg-rose-500'}`} />
-                              <h4 className="text-xs font-bold text-slate-900 truncate">{item.food.name}</h4>
+                      <AnimatePresence initial={false}>
+                        {cart.map(item => (
+                          <motion.div
+                            layout
+                            key={item.food.id}
+                            initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, x: 30, scale: 0.9 }}
+                            transition={{ type: 'spring', stiffness: 450, damping: 25 }}
+                            className="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-100 shadow-xs"
+                          >
+                            <img
+                              src={item.food.image}
+                              alt={item.food.name}
+                              className="w-14 h-14 rounded-xl object-cover shrink-0"
+                            />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-1.5">
+                                <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${item.food.isVeg ? 'bg-emerald-500' : 'bg-rose-500'}`} />
+                                <h4 className="text-xs font-bold text-slate-900 truncate">{item.food.name}</h4>
+                              </div>
+                              <span className="text-[10px] text-slate-400 font-semibold block mt-0.5 truncate">{item.restaurantName}</span>
+                              <span className="text-xs font-extrabold text-slate-900 mt-1 block">₹{item.food.price * item.quantity}</span>
                             </div>
-                            <span className="text-[10px] text-slate-400 font-semibold block mt-0.5 truncate">{item.restaurantName}</span>
-                            <span className="text-xs font-extrabold text-slate-900 mt-1 block">₹{item.food.price * item.quantity}</span>
-                          </div>
 
-                          {/* Quantity selector with finger-friendly buttons */}
-                          <div className="flex items-center bg-white rounded-xl border border-slate-200 shadow-xs p-0.5">
-                            <button
-                              onClick={() => updateCartQuantity(item.food.id, item.quantity - 1)}
-                              className="w-7 h-7 flex items-center justify-center text-slate-600 hover:text-brand-orange active:scale-90"
-                              aria-label="Decrease quantity"
-                            >
-                              <Minus className="w-3.5 h-3.5" />
-                            </button>
-                            <span className="w-6 text-center text-xs font-bold text-slate-800">{item.quantity}</span>
-                            <button
-                              onClick={() => updateCartQuantity(item.food.id, item.quantity + 1)}
-                              className="w-7 h-7 flex items-center justify-center text-slate-600 hover:text-brand-orange active:scale-90"
-                              aria-label="Increase quantity"
-                            >
-                              <Plus className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                        </div>
-                      ))}
+                            {/* Quantity selector with finger-friendly spring buttons */}
+                            <div className="flex items-center bg-white rounded-xl border border-slate-200 shadow-xs p-0.5">
+                              <motion.button
+                                whileTap={{ scale: 0.8 }}
+                                onClick={() => updateCartQuantity(item.food.id, item.quantity - 1)}
+                                className="w-7 h-7 flex items-center justify-center text-slate-600 hover:text-brand-orange cursor-pointer"
+                                aria-label="Decrease quantity"
+                              >
+                                <Minus className="w-3.5 h-3.5" />
+                              </motion.button>
+                              <span className="w-6 text-center text-xs font-black text-slate-800 font-display">{item.quantity}</span>
+                              <motion.button
+                                whileTap={{ scale: 0.8 }}
+                                onClick={() => updateCartQuantity(item.food.id, item.quantity + 1)}
+                                className="w-7 h-7 flex items-center justify-center text-slate-600 hover:text-brand-orange cursor-pointer"
+                                aria-label="Increase quantity"
+                              >
+                                <Plus className="w-3.5 h-3.5" />
+                              </motion.button>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </AnimatePresence>
                     </div>
 
                     {/* Smart Add-ons */}

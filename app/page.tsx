@@ -362,43 +362,69 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Quick Filter Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0">
+          {/* Quick Filter Tabs with smooth layout pill */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
             {[
               { id: 'all', label: '🔥 All Bestsellers' },
               { id: 'spicy', label: '🌶️ Spicy Hits' },
               { id: 'budget', label: '💰 Under ₹100' },
               { id: 'protein', label: '💪 High Protein' },
               { id: 'dessert', label: '🍫 Sweet Tooth' },
-            ].map(tab => (
-              <motion.button
-                key={tab.id}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setActiveFilter(tab.id as any)}
-                className={`px-4 py-2 rounded-2xl text-xs font-bold transition-all shrink-0 ${
-                  activeFilter === tab.id
-                    ? 'bg-slate-900 text-white shadow-md'
-                    : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
-                }`}
-              >
-                {tab.label}
-              </motion.button>
-            ))}
+            ].map(tab => {
+              const isActive = activeFilter === tab.id;
+              return (
+                <motion.button
+                  key={tab.id}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setActiveFilter(tab.id as any)}
+                  className={`relative px-4 py-2 rounded-2xl text-xs font-bold transition-colors shrink-0 cursor-pointer ${
+                    isActive
+                      ? 'text-white'
+                      : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="homeFilterPill"
+                      className="absolute inset-0 bg-slate-900 rounded-2xl shadow-md -z-10"
+                      transition={{ type: 'spring', stiffness: 400, damping: 28 }}
+                    />
+                  )}
+                  {tab.label}
+                </motion.button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Dishes Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {trendingDishes.map(dish => (
-            <FoodCard key={dish.id} food={dish} />
-          ))}
-        </div>
+        {/* Dishes Grid with AnimatePresence & Spring Transitions */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeFilter}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {trendingDishes.map((dish, idx) => (
+              <motion.div
+                key={dish.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.05, duration: 0.3 }}
+              >
+                <FoodCard food={dish} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
         <div className="mt-8 sm:mt-10 text-center">
           <Link
             href="/explore"
-            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg active:scale-95 transition-all"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-slate-900 hover:bg-gradient-to-r hover:from-brand-orange hover:to-brand-pink text-white font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg hover:shadow-orange-500/25 active:scale-95 transition-all"
           >
             <span>Explore All 50+ Dishes</span>
             <ChevronRight className="w-4 h-4" />

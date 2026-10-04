@@ -140,14 +140,21 @@ export function Navbar() {
                   href={link.href}
                   className={`relative flex items-center gap-2 px-3.5 py-2 rounded-2xl text-sm font-semibold transition-all ${
                     isActive 
-                      ? 'bg-slate-900 text-white shadow-md' 
+                      ? 'text-white' 
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
                   }`}
                 >
+                  {isActive && (
+                    <motion.div
+                      layoutId="navbar-active-pill"
+                      className="absolute inset-0 bg-slate-900 rounded-2xl shadow-md -z-10"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
                   <Icon className={`w-4 h-4 ${isActive ? 'text-amber-400' : 'text-slate-400'}`} />
                   <span>{link.label}</span>
                   {link.badge && !isActive && (
-                    <span className="text-[10px] font-extrabold px-1.5 py-0.5 rounded-full bg-brand-pink/10 text-brand-pink">
+                    <span className="text-[10px] font-extrabold px-1.5 py-0.5 rounded-full bg-brand-pink/10 text-brand-pink animate-pulse">
                       {link.badge}
                     </span>
                   )}
@@ -159,32 +166,45 @@ export function Navbar() {
           {/* Right Action Bar */}
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Search Trigger */}
-            <button
+            <motion.button
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.92 }}
               onClick={() => setIsSearchOpen(true)}
-              className="p-2 sm:p-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 transition-colors relative"
+              className="p-2 sm:p-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 transition-colors relative cursor-pointer"
               aria-label="Search dishes"
             >
               <Search className="w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
+            </motion.button>
 
             {/* Cart Trigger */}
-            <button
+            <motion.button
+              whileHover={{ scale: 1.04, y: -1 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setIsCartOpen(true)}
-              className="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-gradient-to-r from-brand-orange to-brand-pink text-white font-bold text-xs sm:text-sm shadow-lg shadow-brand-orange/25 hover:shadow-brand-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-gradient-to-r from-brand-orange to-brand-pink text-white font-bold text-xs sm:text-sm shadow-lg shadow-brand-orange/25 hover:shadow-brand-orange/40 transition-all cursor-pointer"
               aria-label="View Cart"
             >
               <div className="relative">
                 <ShoppingBag className="w-4 h-4" />
-                {cartItemCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-slate-950 text-white text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center border-2 border-white">
-                    {cartItemCount}
-                  </span>
-                )}
+                <AnimatePresence>
+                  {cartItemCount > 0 && (
+                    <motion.span
+                      key={cartItemCount}
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0, opacity: 0 }}
+                      transition={{ type: 'spring', stiffness: 600, damping: 20 }}
+                      className="absolute -top-2.5 -right-2.5 bg-slate-950 text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center border-2 border-white shadow-sm"
+                    >
+                      {cartItemCount}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </div>
               <span className="hidden sm:inline">
                 {cartItemCount > 0 ? `₹${cartTotal}` : 'Cart'}
               </span>
-            </button>
+            </motion.button>
 
             {/* Profile Avatar / Link */}
             <Link

@@ -221,37 +221,52 @@ export function FoodCard({ food, variant = 'default' }: FoodCardProps) {
             )}
           </div>
 
-          {/* Interactive Quantity / Add Button with Magnetic Bounce */}
+          {/* Interactive Quantity / Add Button with Spring Physics */}
           {quantity === 0 ? (
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.07, y: -2 }}
               whileTap={{ scale: 0.90 }}
+              transition={{ type: 'spring', stiffness: 500, damping: 15 }}
               onClick={handleAddWithFlyEffect}
-              className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-slate-900 hover:bg-gradient-to-r hover:from-brand-orange hover:to-brand-pink text-white font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-sm transition-all flex items-center gap-1 active:scale-95"
+              className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-slate-900 hover:bg-gradient-to-r hover:from-brand-orange hover:to-brand-pink text-white font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-md hover:shadow-orange-500/30 transition-all flex items-center gap-1 active:scale-95 cursor-pointer"
             >
               <Plus className="w-3.5 h-3.5" /> Add
             </motion.button>
           ) : (
             <motion.div
-              initial={{ scale: 0.85 }}
+              initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
-              className="flex items-center bg-slate-900 text-white rounded-xl shadow-md p-0.5"
+              transition={{ type: 'spring', stiffness: 500, damping: 18 }}
+              className="flex items-center bg-slate-900 text-white rounded-xl shadow-lg p-0.5"
             >
-              <button
+              <motion.button
+                whileTap={{ scale: 0.8 }}
                 onClick={() => updateCartQuantity(food.id, quantity - 1)}
-                className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-slate-800 text-slate-300 hover:text-white transition-colors active:scale-90"
+                className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-slate-800 text-slate-300 hover:text-white transition-colors cursor-pointer"
                 aria-label="Decrease quantity"
               >
                 <Minus className="w-3.5 h-3.5" />
-              </button>
-              <span className="w-6 text-center font-black text-xs font-display">{quantity}</span>
-              <button
+              </motion.button>
+              <AnimatePresence mode="popLayout">
+                <motion.span
+                  key={quantity}
+                  initial={{ y: -6, opacity: 0, scale: 0.7 }}
+                  animate={{ y: 0, opacity: 1, scale: 1 }}
+                  exit={{ y: 6, opacity: 0, scale: 0.7 }}
+                  transition={{ type: 'spring', stiffness: 600, damping: 20 }}
+                  className="w-6 text-center font-black text-xs font-display inline-block"
+                >
+                  {quantity}
+                </motion.span>
+              </AnimatePresence>
+              <motion.button
+                whileTap={{ scale: 0.8 }}
                 onClick={() => updateCartQuantity(food.id, quantity + 1)}
-                className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-slate-800 text-slate-300 hover:text-white transition-colors active:scale-90"
+                className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-slate-800 text-slate-300 hover:text-white transition-colors cursor-pointer"
                 aria-label="Increase quantity"
               >
                 <Plus className="w-3.5 h-3.5" />
-              </button>
+              </motion.button>
             </motion.div>
           )}
         </div>
