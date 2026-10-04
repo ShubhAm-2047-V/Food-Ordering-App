@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MOODS } from '@/data/moods';
@@ -25,6 +25,7 @@ import { Mood, DietaryPreference } from '@/types';
 function FoodMoodContent() {
   const searchParams = useSearchParams();
   const initialMoodId = searchParams.get('mood') || 'spicy';
+  const productsSectionRef = useRef<HTMLElement>(null);
   
   const { foods } = useApp();
   const [selectedMood, setSelectedMood] = useState<Mood>(
@@ -37,6 +38,22 @@ function FoodMoodContent() {
   const [onlyHighProtein, setOnlyHighProtein] = useState<boolean>(false);
   const [onlyFastDelivery, setOnlyFastDelivery] = useState<boolean>(false);
   const [sortBy, setSortBy] = useState<'rating' | 'price-low' | 'price-high' | 'time'>('rating');
+
+  const scrollToProducts = () => {
+    if (productsSectionRef.current) {
+      const yOffset = -85; // navbar height clearance
+      const y = productsSectionRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
+  const handleSelectMood = (mood: Mood) => {
+    setSelectedMood(mood);
+    // Smooth scroll down to matched dishes
+    setTimeout(() => {
+      scrollToProducts();
+    }, 60);
+  };
 
   useEffect(() => {
     const moodParam = searchParams.get('mood');
@@ -135,11 +152,11 @@ function FoodMoodContent() {
               return (
                 <motion.button
                   key={mood.id}
-                  onClick={() => setSelectedMood(mood)}
+                  onClick={() => handleSelectMood(mood)}
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.94 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-                  className={`relative overflow-hidden p-2.5 sm:p-5 rounded-2xl sm:rounded-3xl text-left transition-all duration-300 border select-none ${
+                  className={`relative overflow-hidden p-3 sm:p-5 rounded-2xl sm:rounded-3xl text-left transition-all duration-300 border select-none cursor-pointer ${
                     isSelected 
                       ? `bg-gradient-to-r ${mood.gradientBg} text-white shadow-xl sm:shadow-2xl shadow-orange-500/35 border-transparent ring-2 sm:ring-4 ring-orange-400/40` 
                       : 'bg-white hover:bg-slate-50 text-slate-800 border-slate-200/80 shadow-soft'
@@ -159,10 +176,10 @@ function FoodMoodContent() {
                       </motion.span>
                     )}
                   </div>
-                  <h3 className={`mt-1.5 sm:mt-3 text-xs sm:text-base font-extrabold line-clamp-1 ${isSelected ? 'text-white' : 'text-slate-900'}`}>
-                    {mood.name.split(' ')[0]}
+                  <h3 className={`mt-2 sm:mt-3 text-xs sm:text-base font-extrabold line-clamp-1 ${isSelected ? 'text-white' : 'text-slate-900'}`}>
+                    {mood.id === 'spicy' ? 'Spicy Hit' : mood.id === 'healthy' ? 'Healthy & Fresh' : mood.id === 'delicious' ? 'Delicious' : mood.name}
                   </h3>
-                  <p className={`text-[10px] sm:text-xs mt-0.5 line-clamp-1 hidden sm:block ${isSelected ? 'text-white/80' : 'text-slate-500'}`}>
+                  <p className={`text-[10px] sm:text-xs mt-0.5 line-clamp-1 ${isSelected ? 'text-white/80' : 'text-slate-500'}`}>
                     {mood.tagline}
                   </p>
                 </motion.button>
@@ -174,7 +191,7 @@ function FoodMoodContent() {
       </section>
 
       {/* 3. DYNAMIC MOOD RECOMMENDATION FEED */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
+      <section ref={productsSectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 scroll-mt-24">
         
         {/* Dynamic Header Banner with Shimmer & Scale In */}
         <AnimatePresence mode="wait">
