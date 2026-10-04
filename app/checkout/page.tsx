@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { useApp } from '@/context/AppContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -18,7 +19,6 @@ import {
   ShoppingBag
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import Link from 'next/navigation';
 import { Order } from '@/types';
 
 export default function CheckoutPage() {
@@ -92,77 +92,77 @@ export default function CheckoutPage() {
   // If order was just placed, display the Animated Order Success Experience
   if (completedOrder) {
     return (
-      <div className="min-h-screen py-16 px-4 max-w-3xl mx-auto text-center">
+      <div className="min-h-screen py-10 sm:py-16 px-4 max-w-3xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          className="bg-white rounded-card-lg p-8 sm:p-12 border border-slate-100 shadow-2xl relative overflow-hidden"
+          className="bg-white rounded-card-lg p-6 sm:p-12 border border-slate-100 shadow-2xl relative overflow-hidden"
         >
           {/* Confetti Glow Background */}
-          <div className="w-24 h-24 mx-auto rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-5xl mb-6 shadow-glow-green">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-4xl sm:text-5xl mb-4 sm:mb-6 shadow-glow-green">
             🎉
           </div>
 
-          <span className="text-xs font-black uppercase tracking-widest text-brand-orange block mb-1">
+          <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-brand-orange block mb-1">
             ORDER #{completedOrder.id} CONFIRMED
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black font-display text-slate-900">
+          <h1 className="text-2xl sm:text-5xl font-black font-display text-slate-900">
             YOUR FOOD IS ON THE WAY!
           </h1>
-          <p className="text-sm sm:text-base text-slate-600 mt-2 font-medium">
+          <p className="text-xs sm:text-base text-slate-600 mt-2 font-medium">
             Estimated Arrival: <strong>~{completedOrder.estimatedDeliveryMin} minutes</strong>
           </p>
 
           {/* Animated Delivery Tracker Stepper */}
-          <div className="my-10 p-6 bg-slate-50 rounded-3xl border border-slate-100 text-left">
+          <div className="my-6 sm:my-10 p-4 sm:p-6 bg-slate-50 rounded-3xl border border-slate-100 text-left">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Live Delivery Status</span>
-              <span className="text-xs font-extrabold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md">Live Cooking Simulator</span>
+              <span className="text-[11px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider">Live Delivery Status</span>
+              <span className="text-[10px] sm:text-xs font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">Live Cooking</span>
             </div>
 
             <div className="relative pl-6 space-y-6 border-l-2 border-brand-orange">
               <div className="relative">
                 <span className="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-brand-orange ring-4 ring-orange-100" />
-                <h4 className="text-sm font-bold text-slate-900">Order Confirmed by CRAVO</h4>
-                <p className="text-xs text-slate-500 mt-0.5">Kitchen has accepted your order.</p>
+                <h4 className="text-xs sm:text-sm font-bold text-slate-900">Order Confirmed by CRAVO</h4>
+                <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">Kitchen has accepted your order.</p>
               </div>
 
               <div className="relative">
                 <span className="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-brand-orange animate-ping" />
-                <h4 className="text-sm font-bold text-brand-orange">Kitchen is Preparing Your Fresh Meal</h4>
-                <p className="text-xs text-slate-500 mt-0.5">Chef is cooking with fresh ingredients.</p>
+                <h4 className="text-xs sm:text-sm font-bold text-brand-orange">Kitchen is Preparing Your Fresh Meal</h4>
+                <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">Chef is cooking with fresh ingredients.</p>
               </div>
 
               <div className="relative opacity-50">
                 <span className="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-slate-300" />
-                <h4 className="text-sm font-bold text-slate-700">Rider Pick-up &amp; Delivery</h4>
-                <p className="text-xs text-slate-400 mt-0.5">Hot thermal packaging on electric bike.</p>
+                <h4 className="text-xs sm:text-sm font-bold text-slate-700">Rider Pick-up &amp; Delivery</h4>
+                <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5">Hot thermal packaging on electric bike.</p>
               </div>
             </div>
           </div>
 
           {/* Points Earned Banner */}
-          <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold flex items-center justify-between mb-8">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold flex items-center justify-between mb-6 sm:mb-8">
             <span className="flex items-center gap-1.5">
-              <Sparkles className="w-4 h-4 text-brand-orange" />
-              You earned +{completedOrder.foodPointsEarned} CRAVO Loyalty Points!
+              <Sparkles className="w-4 h-4 text-brand-orange shrink-0" />
+              <span>You earned +{completedOrder.foodPointsEarned} Points!</span>
             </span>
-            <a href="/profile" className="text-brand-orange hover:underline">View Level &gt;</a>
+            <Link href="/profile" className="text-brand-orange hover:underline shrink-0">View Level &gt;</Link>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <Link
               href="/orders"
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-black text-xs uppercase tracking-wider shadow-lg transition-all"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-black text-xs uppercase tracking-wider shadow-lg active:scale-95 transition-all text-center"
             >
               Track Live in Orders 📦
-            </a>
-            <a
+            </Link>
+            <Link
               href="/"
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs uppercase tracking-wider transition-all"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs uppercase tracking-wider active:scale-95 transition-all text-center"
             >
               Back to Home 🏠
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>
@@ -179,12 +179,12 @@ export default function CheckoutPage() {
           </div>
           <h2 className="text-xl font-black font-display text-slate-900">Your bag is empty</h2>
           <p className="text-xs text-slate-500 mt-1">Add your favorite meals before checking out.</p>
-          <a
+          <Link
             href="/food-mood"
             className="mt-6 inline-block px-6 py-3 rounded-2xl bg-slate-900 text-white font-bold text-xs uppercase tracking-wider"
           >
             Explore Food Moods
-          </a>
+          </Link>
         </div>
       </div>
     );

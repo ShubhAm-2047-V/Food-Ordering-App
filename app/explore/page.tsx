@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { useApp } from '@/context/AppContext';
 import { FoodCard } from '@/components/food/FoodCard';
 import { 
@@ -171,7 +172,7 @@ export default function ExplorePage() {
               <Sparkles className="w-5 h-5 text-purple-500" />
               <h2 className="text-xl sm:text-2xl font-black font-display text-slate-900">Hidden Gems Under ₹90</h2>
             </div>
-            <a href="/under-100" className="text-xs font-bold text-brand-orange hover:underline">View All &gt;</a>
+            <Link href="/under-100" className="text-xs font-bold text-brand-orange hover:underline">View All &gt;</Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {hiddenGems.slice(0, 4).map(dish => (
@@ -187,7 +188,7 @@ export default function ExplorePage() {
               <Flame className="w-5 h-5 text-red-600" />
               <h2 className="text-xl sm:text-2xl font-black font-display text-slate-900">Bold &amp; Spicy Hits</h2>
             </div>
-            <a href="/food-mood?mood=spicy" className="text-xs font-bold text-brand-orange hover:underline">Explore Spicy Mood &gt;</a>
+            <Link href="/food-mood?mood=spicy" className="text-xs font-bold text-brand-orange hover:underline">Explore Spicy &gt;</Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {spicyPicks.slice(0, 4).map(dish => (

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { useApp } from '@/context/AppContext';
 import { motion } from 'framer-motion';
 import { 
@@ -39,32 +40,32 @@ export default function OrdersPage() {
   };
 
   return (
-    <div className="min-h-screen py-10 pb-24 bg-brand-light">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-6 sm:py-10 pb-24 bg-brand-light">
+      <div className="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8">
         
-        <div className="mb-8">
-          <span className="text-xs font-black uppercase tracking-wider text-brand-orange">Order Management</span>
-          <h1 className="text-3xl sm:text-4xl font-black font-display text-slate-950">
+        <div className="mb-6 sm:mb-8">
+          <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-brand-orange">Order Management</span>
+          <h1 className="text-2xl sm:text-4xl font-black font-display text-slate-950">
             Live Deliveries &amp; History
           </h1>
         </div>
 
         {orders.length === 0 ? (
-          <div className="bg-white rounded-card p-12 text-center border border-slate-200/80 shadow-soft">
-            <div className="w-20 h-20 mx-auto rounded-3xl bg-orange-50 text-4xl flex items-center justify-center mb-4">
+          <div className="bg-white rounded-card p-8 sm:p-12 text-center border border-slate-200/80 shadow-soft">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-3xl bg-orange-50 text-3xl sm:text-4xl flex items-center justify-center mb-4">
               📦
             </div>
-            <h3 className="text-xl font-black font-display text-slate-900">No Orders Placed Yet</h3>
+            <h3 className="text-lg sm:text-xl font-black font-display text-slate-900">No Orders Placed Yet</h3>
             <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
               Ready to satisfy your cravings? Explore our Food Moods or build a ₹100 combo!
             </p>
             <div className="mt-6 flex justify-center gap-3">
-              <a
+              <Link
                 href="/food-mood"
-                className="px-6 py-3 rounded-2xl bg-slate-900 text-white font-bold text-xs uppercase tracking-wider shadow-md"
+                className="px-6 py-3 rounded-2xl bg-slate-900 text-white font-bold text-xs uppercase tracking-wider shadow-md active:scale-95 transition-all"
               >
                 Explore Food Mood 😋
-              </a>
+              </Link>
             </div>
           </div>
         ) : (

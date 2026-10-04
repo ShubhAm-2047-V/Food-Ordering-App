@@ -110,47 +110,47 @@ export default function Under100Page() {
     <div data-theme="under-100" className="min-h-screen pb-24 relative overflow-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="pt-10 pb-16 bg-gradient-to-b from-amber-400/15 via-emerald-500/10 to-transparent border-b border-emerald-100/60">
+      <section className="pt-8 pb-12 sm:pt-10 sm:pb-16 bg-gradient-to-b from-amber-400/15 via-emerald-500/10 to-transparent border-b border-emerald-100/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black uppercase tracking-wider mb-4 border border-emerald-200 shadow-xs"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] sm:text-xs font-black uppercase tracking-wider mb-3 sm:mb-4 border border-emerald-200 shadow-xs"
           >
-            <Coins className="w-4 h-4 text-emerald-600 animate-spin" />
+            <Coins className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 animate-spin" />
             <span>MAXIMUM CRAVING • MINIMUM SPEND</span>
           </motion.div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-display text-slate-950 tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black font-display text-slate-950 tracking-tight leading-tight">
             GOOD FOOD. <br className="hidden sm:inline" />
             <span className="bg-gradient-to-r from-amber-500 via-emerald-600 to-blue-600 bg-clip-text text-transparent animate-gradient-shift">
               ₹100 MAX.
             </span>
           </h1>
 
-          <p className="mt-3 text-base sm:text-xl text-slate-600 font-medium max-w-xl mx-auto">
+          <p className="mt-2 sm:mt-3 text-sm sm:text-xl text-slate-600 font-medium max-w-xl mx-auto">
             &ldquo;How much can we get you for less than ₹100?&rdquo;
           </p>
 
           {/* Budget Quick Switcher Buttons with spring animations */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 max-w-2xl mx-auto">
+          <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 max-w-2xl mx-auto">
             {[50, 75, 100, 150, 200].map(amt => (
               <motion.button
                 key={amt}
-                whileHover={{ scale: 1.08, y: -2 }}
+                whileHover={{ scale: 1.06, y: -2 }}
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setSelectedBudget(amt)}
-                className={`px-5 py-3 rounded-2xl font-black text-sm transition-all duration-300 flex items-center gap-1.5 ${
+                className={`px-3.5 sm:px-5 py-2 sm:py-3 rounded-2xl font-black text-xs sm:text-sm transition-all duration-300 flex items-center gap-1 sm:gap-1.5 ${
                   selectedBudget === amt
-                    ? 'bg-slate-900 text-white shadow-xl shadow-slate-900/30 scale-105 ring-4 ring-amber-400/50'
+                    ? 'bg-slate-900 text-white shadow-xl shadow-slate-900/30 scale-105 ring-2 sm:ring-4 ring-amber-400/50'
                     : 'bg-white hover:bg-slate-100 text-slate-800 border border-slate-200/80 shadow-soft'
                 }`}
               >
                 <span>₹{amt}</span>
                 {amt === 100 && (
-                  <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-amber-400 text-slate-950 font-black animate-pulse">
-                    DEFAULT
+                  <span className="text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-md bg-amber-400 text-slate-950 font-black animate-pulse">
+                    BEST
                   </span>
                 )}
               </motion.button>
@@ -158,9 +158,9 @@ export default function Under100Page() {
           </div>
 
           {/* Party Size & Diet Switchers */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs font-bold text-slate-700">
-            <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-2xl border border-slate-200 shadow-xs">
-              <Users className="w-4 h-4 text-brand-orange" />
+          <div className="mt-5 sm:mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs font-bold text-slate-700">
+            <div className="flex items-center gap-1 sm:gap-1.5 bg-white px-2.5 sm:px-3 py-1.5 rounded-2xl border border-slate-200 shadow-xs">
+              <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-orange" />
               <span>People:</span>
               {[1, 2, 3].map(n => (
                 <button
@@ -173,13 +173,13 @@ export default function Under100Page() {
               ))}
             </div>
 
-            <div className="flex items-center gap-1 bg-white px-3 py-1.5 rounded-2xl border border-slate-200 shadow-xs">
-              <Filter className="w-4 h-4 text-emerald-600" />
+            <div className="flex items-center gap-1 bg-white px-2.5 sm:px-3 py-1.5 rounded-2xl border border-slate-200 shadow-xs">
+              <Filter className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
               {(['all', 'veg', 'non-veg'] as DietaryPreference[]).map(d => (
                 <button
                   key={d}
                   onClick={() => setDietPref(d)}
-                  className={`px-2 py-0.5 rounded-lg uppercase transition-colors ${dietPref === d ? 'bg-slate-900 text-white' : 'hover:bg-slate-100'}`}
+                  className={`px-2 py-0.5 rounded-lg uppercase transition-colors text-[11px] sm:text-xs ${dietPref === d ? 'bg-slate-900 text-white' : 'hover:bg-slate-100'}`}
                 >
                   {d}
                 </button>
