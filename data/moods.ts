@@ -1,0 +1,122 @@
+import { Mood } from '@/types';
+
+export const MOODS: Mood[] = [
+  {
+    id: 'delicious',
+    name: 'Craving Something Delicious',
+    tagline: 'Treat your tastebuds',
+    emoji: '😋',
+    description: 'Rich, mouth-watering gourmet dishes designed to satisfy deep cravings.',
+    accentColor: '#FF7A00',
+    gradientBg: 'from-amber-500 via-orange-500 to-red-500',
+    heroHeadline: 'PURE SATISFACTION 😋',
+    heroSubheadline: 'Handpicked irresistible favorites that hit every single taste receptor.',
+    recommendedTags: ['delicious', 'bestseller', 'comfort', 'gourmet'],
+    quote: '"Good food is the foundation of genuine happiness."'
+  },
+  {
+    id: 'spicy',
+    name: 'I Want Spicy',
+    tagline: 'Turn up the heat',
+    emoji: '🌶️',
+    description: 'Fiery Indian curries, Schezwan sizzles, and bold chili delights that bring the heat.',
+    accentColor: '#FF3B30',
+    gradientBg: 'from-red-600 via-orange-600 to-rose-600',
+    heroHeadline: 'TURN UP THE HEAT 🔥',
+    heroSubheadline: 'Bold, fiery and packed with authentic masalas for true spice chasers.',
+    recommendedTags: ['spicy', 'hot', 'schezwan', 'curry'],
+    spiceFilter: 2,
+    quote: '"Life needs a little extra spice to keep it interesting."'
+  },
+  {
+    id: 'healthy',
+    name: 'I Want Something Healthy',
+    tagline: 'Clean, fresh & guilt-free',
+    emoji: '🥗',
+    description: 'Crisp salads, grain bowls, detox smoothies, and clean meals under 450 calories.',
+    accentColor: '#22C55E',
+    gradientBg: 'from-emerald-500 via-teal-500 to-cyan-500',
+    heroHeadline: 'CLEAN FUEL, ZERO GUILT 🥗',
+    heroSubheadline: 'Nutrient-dense, freshly tossed, and designed to leave you feeling energized.',
+    recommendedTags: ['healthy', 'clean', 'lowcal', 'salad'],
+    quote: '"Nourish your body, respect your future."'
+  },
+  {
+    id: 'comfort',
+    name: 'Comfort Food',
+    tagline: 'Warm hug in a bowl',
+    emoji: '😴',
+    description: 'Creamy dal makhani, warm khichdi, cheesy pastas, and soul-soothing classics.',
+    accentColor: '#F59E0B',
+    gradientBg: 'from-amber-600 via-yellow-600 to-orange-600',
+    heroHeadline: 'WARM HUGS IN A BOWL 😴',
+    heroSubheadline: 'Soothing comfort dishes that instantly calm a hectic day.',
+    recommendedTags: ['comfort', 'homestyle', 'creamy', 'warm'],
+    quote: '"Comfort food is soothing to the soul and gentle on the mind."'
+  },
+  {
+    id: 'protein',
+    name: 'High Protein',
+    tagline: 'Hit your macro goals',
+    emoji: '💪',
+    description: 'Chicken breast bowls, paneer tikka, egg power meals packed with 25g+ protein.',
+    accentColor: '#3B82F6',
+    gradientBg: 'from-blue-600 via-indigo-600 to-violet-600',
+    heroHeadline: 'POWER UP YOUR GAINS 💪',
+    heroSubheadline: 'Targeted high-protein meals with verified macro stats for fitness enthusiasts.',
+    recommendedTags: ['protein', 'gym', 'chicken', 'paneer'],
+    quote: '"Fuel your ambitions with every single bite."'
+  },
+  {
+    id: 'sweet',
+    name: 'Sweet Cravings',
+    tagline: 'Sugar rush & desserts',
+    emoji: '🍫',
+    description: 'Warm gulab jamuns, decadent chocolate brownies, waffles, and thick shakes.',
+    accentColor: '#EC4899',
+    gradientBg: 'from-pink-500 via-rose-500 to-purple-600',
+    heroHeadline: 'SWEET TOOTH CALLING 🍫',
+    heroSubheadline: 'Indulgent, velvety desserts crafted to make your day ten times sweeter.',
+    recommendedTags: ['dessert', 'sweet', 'chocolate', 'bakery'],
+    quote: '"Stressed spelled backwards is desserts. Coincidence? Never."'
+  },
+  {
+    id: 'cheat',
+    name: 'Cheat Meal',
+    tagline: 'No regrets today',
+    emoji: '🍕',
+    description: 'Loaded cheese burst pizzas, oversized smash burgers, and crispy loaded fries.',
+    accentColor: '#8B5CF6',
+    gradientBg: 'from-purple-600 via-pink-600 to-red-500',
+    heroHeadline: 'EPIC CHEAT DAY 🍕',
+    heroSubheadline: 'Go all out with extra cheese, double patties, and zero holding back.',
+    recommendedTags: ['cheat', 'cheese', 'burger', 'pizza'],
+    quote: '"Today is for feasting with no calorie counting permitted."'
+  },
+  {
+    id: 'light',
+    name: 'Light & Chill',
+    tagline: 'Easy on the tummy',
+    emoji: '☕',
+    description: 'Steaming ginger chai, soft idlis, iced teas, light wraps, and quick nibbles.',
+    accentColor: '#06B6D4',
+    gradientBg: 'from-cyan-500 via-sky-500 to-teal-500',
+    heroHeadline: 'EASY BREEZY BITES ☕',
+    heroSubheadline: 'Gentle, refreshing snacks and beverages for a relaxed afternoon.',
+    recommendedTags: ['light', 'tea', 'snacks', 'quick'],
+    quote: '"Take a pause, breathe, and enjoy a gentle bite."'
+  },
+  {
+    id: 'party',
+    name: 'Party Mood',
+    tagline: 'Feasts for the whole squad',
+    emoji: '🎉',
+    description: 'Sharing platters, combo buckets, multi-course biryani pots, and crowd favorites.',
+    accentColor: '#FF2D8D',
+    gradientBg: 'from-pink-600 via-purple-600 to-indigo-700',
+    heroHeadline: 'FEAST WITH THE GANG 🎉',
+    heroSubheadline: 'High-energy sharing platters, giant combos, and party-sized portions.',
+    recommendedTags: ['party', 'combos', 'sharing', 'platter'],
+    quote: '"Great food is best enjoyed surrounded by great friends."'
+  }
+];
